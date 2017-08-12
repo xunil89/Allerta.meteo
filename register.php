@@ -1,17 +1,10 @@
 <?php
 
-// PARAMETRI DA MODIFICARE
-$WEBHOOK_URL = 'http://t.me/allerta_meteo_bot';
-$BOT_TOKEN = '';
+// https://api.telegram.org/bot414753725:AAENDyA3eOdFzDPC9HeWn0hnRH9EDGkn8A
+$token = "414753725:AAENDyA3eOdFzDPC9HeWn0hnRH9EDGkn8A";
+$website = "https://api.telegram.org/bot".$token;
 
-// NON APPORTARE MODIFICHE NEL CODICE SEGUENTE
-$API_URL = 'https://api.telegram.org/bot' . $BOT_TOKEN .'/';
-$method = 'setWebhook';
-$parameters = array('url' => $WEBHOOK_URL);
-$url = $API_URL . $method. '?' . http_build_query($parameters);
-$handle = curl_init($url);
-curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($handle, CURLOPT_CONNECTTIMEOUT, 5);
-curl_setopt($handle, CURLOPT_TIMEOUT, 60);
-$result = curl_exec($handle);
-print_r($result);
+$getme = file_get_contents($website."/getme");
+
+print_r($getme);
+?>
